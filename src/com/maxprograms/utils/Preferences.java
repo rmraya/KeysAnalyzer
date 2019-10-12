@@ -3,6 +3,7 @@ package com.maxprograms.utils;
 import java.io.File;
 import java.io.IOError;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -58,7 +59,7 @@ public class Preferences {
 
 	public synchronized static File getPreferencesDir() throws IOException {
 		String directory;
-		if (System.getProperty("file.separator").equals("\\")) { //$NON-NLS-1$ //$NON-NLS-2$
+		if (File.separator.equals("\\")) { //$NON-NLS-1$ //$NON-NLS-2$
 			// Windows
 			directory = System.getenv("AppData") + "\\Maxprograms\\KeysAnalyzer\\"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
@@ -73,9 +74,7 @@ public class Preferences {
 		}
 		File dir = new File(directory);
 		if (!dir.exists()) {
-			if (!dir.mkdirs()) {
-				throw new IOException("Error creating preferences directory.");
-			}
+			Files.createDirectories(dir.toPath());
 		}
 		return dir;
 	}

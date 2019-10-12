@@ -20,7 +20,8 @@ public class ResourceManager {
 
 	public Image getIcon() {
 		if (icon == null) {
-			if (System.getProperty("os.name").startsWith("Mac")) {
+			String os = System.getProperty("os.name").toLowerCase();
+			if (os.startsWith("mac")) {
 				icon = new Image(display, ResourceManager.class.getResourceAsStream("macIcon.png")); //$NON-NLS-1$
 			} else {
 				icon = new Image(display, ResourceManager.class.getResourceAsStream("winIcon.png")); //$NON-NLS-1$

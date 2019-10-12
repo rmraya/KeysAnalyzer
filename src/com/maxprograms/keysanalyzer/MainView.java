@@ -66,7 +66,7 @@ public class MainView {
 			public void handleEvent(Event arg0) {
 				Locator.remember(shell, "MainView");
 			}
-			
+
 		});
 		shell.addListener(SWT.Resize, new Listener() {
 
@@ -75,18 +75,18 @@ public class MainView {
 				fixColumns();
 			}
 		});
-		
+
 		GridLayout shellLayout = new GridLayout();
 		shellLayout.marginWidth = 0;
 		shellLayout.marginHeight = 0;
 		shell.setLayout(shellLayout);
-	
+
 		systemMenu = display.getSystemMenu();
-		
+
 		if (systemMenu != null && System.getProperty("os.name").startsWith("Mac")) {
-			
+
 			isMac = true;
-			
+
 			MenuItem sysItem = getItem(systemMenu, SWT.ID_ABOUT);
 			sysItem.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent e) {
@@ -103,97 +103,97 @@ public class MainView {
 			sysItem = getItem(systemMenu, SWT.ID_PREFERENCES);
 			sysItem.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent e) {
-					PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE|SWT.RESIZE);
+					PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE);
 					dialog.show();
 				}
 			});
 		}
-	
+
 		Menu bar = display.getMenuBar();
 		if (bar == null) {
 			bar = new Menu(shell, SWT.BAR);
 			shell.setMenuBar(bar);
 		}
 		createMenu(bar);
-	
+
 		CustomBar customBar = new CustomBar(shell, SWT.NONE);
 		customBar.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
+
 		CustomItem openItem = customBar.addItem(SWT.NONE);
 		openItem.setText("Analyze Map");
 		openItem.setImage(KeysAnalyzer.getResourceManager().getPaper());
 		openItem.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseUp(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
-			
+
 			@Override
 			public void mouseDown(MouseEvent arg0) {
 				openMap();
 			}
-			
+
 			@Override
 			public void mouseDoubleClick(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
 		});
-		
+
 		CustomItem preferences = customBar.addItem(SWT.PUSH);
 		preferences.setText("XML Catalog");
 		preferences.setImage(KeysAnalyzer.getResourceManager().getGear());
 		preferences.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseUp(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
-			
+
 			@Override
 			public void mouseDown(MouseEvent arg0) {
-				PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE|SWT.RESIZE);
+				PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE);
 				dialog.show();
 			}
-			
+
 			@Override
 			public void mouseDoubleClick(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
 		});
-		
+
 		customBar.addFiller();
-		
+
 		CustomItem helpItem = customBar.addItem(SWT.PUSH);
 		helpItem.setText("User Guide");
 		helpItem.setImage(KeysAnalyzer.getResourceManager().getHelp());
 		helpItem.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseUp(MouseEvent arg0) {
 				// do nothing
-				
+
 			}
-			
+
 			@Override
 			public void mouseDown(MouseEvent arg0) {
 				try {
 					Program.launch(new File("docs/keyanalyzer.pdf").toURI().toURL().toString());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
-					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING|SWT.OK);
+					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK);
 					box.setMessage("There was an error opening help file.");
-					box.open();					
+					box.open();
 				}
 			}
-			
+
 			@Override
 			public void mouseDoubleClick(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
 		});
-		
-		table = new Table(shell, SWT.H_SCROLL|SWT.V_SCROLL|SWT.SINGLE|SWT.FULL_SELECTION);
+
+		table = new Table(shell, SWT.H_SCROLL | SWT.V_SCROLL | SWT.SINGLE | SWT.FULL_SELECTION);
 		GridData tableData = new GridData(GridData.FILL_BOTH);
 		table.setLayoutData(tableData);
 		table.setLinesVisible(true);
@@ -205,17 +205,17 @@ public class MainView {
 			table.setBackgroundImage(KeysAnalyzer.getResourceManager().getBackground());
 		}
 		table.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseUp(MouseEvent arg0) {
 				// do nothing
 			}
-			
+
 			@Override
 			public void mouseDown(MouseEvent arg0) {
-				// do nothing				
+				// do nothing
 			}
-			
+
 			@Override
 			public void mouseDoubleClick(MouseEvent arg0) {
 				if (table.getSelectionCount() == 1) {
@@ -225,10 +225,10 @@ public class MainView {
 		});
 		mapColumn = new TableColumn(table, SWT.NONE);
 		mapColumn.setText("DITA Map");
-		
+
 		dateColumn = new TableColumn(table, SWT.NONE);
 		dateColumn.setText("Analyzed");
-		
+
 		Listener sortListener = new Listener() {
 			public void handleEvent(Event e) {
 				if (table.getSortDirection() == SWT.UP) {
@@ -238,18 +238,20 @@ public class MainView {
 				}
 				TableColumn column = (TableColumn) e.widget;
 				table.setSortColumn(column);
-				if (column == mapColumn) sortField = 0;
-				if (column == dateColumn) sortField = 1;
+				if (column == mapColumn)
+					sortField = 0;
+				if (column == dateColumn)
+					sortField = 1;
 				loadAnalysis();
 			}
 		};
-		
+
 		mapColumn.addListener(SWT.Selection, sortListener);
 		dateColumn.addListener(SWT.Selection, sortListener);
-		
+
 		table.setSortColumn(mapColumn);
 		table.setSortDirection(SWT.UP);
-	
+
 		loadAnalysis();
 	}
 
@@ -258,7 +260,7 @@ public class MainView {
 		file.setText("&File");
 		Menu fileMenu = new Menu(file);
 		file.setMenu(fileMenu);
-		
+
 		MenuItem publish = new MenuItem(fileMenu, SWT.PUSH);
 		publish.setText("Analyze Map");
 		publish.setImage(KeysAnalyzer.getResourceManager().getPaper());
@@ -266,20 +268,20 @@ public class MainView {
 			public void widgetSelected(SelectionEvent event) {
 				openMap();
 			}
-		
+
 		});
-		
+
 		if (!isMac) {
-			
+
 			new MenuItem(fileMenu, SWT.SEPARATOR);
-			
+
 			MenuItem close = new MenuItem(fileMenu, SWT.PUSH);
 			if (System.getProperty("file.separator").equals("\\")) {
 				close.setText("Exit\tAlt + F4");
-				close.setAccelerator(SWT.ALT|SWT.F4);
+				close.setAccelerator(SWT.ALT | SWT.F4);
 			} else {
 				close.setText("Quit\tCtrl + Q");
-				close.setAccelerator(SWT.CTRL|'Q');
+				close.setAccelerator(SWT.CTRL | 'Q');
 			}
 			close.addSelectionListener(new SelectionAdapter() {
 				public void widgetSelected(SelectionEvent event) {
@@ -287,7 +289,7 @@ public class MainView {
 				}
 			});
 		}
-		
+
 		MenuItem settings = new MenuItem(bar, SWT.CASCADE);
 		settings.setText("&Settings");
 		Menu settingsMenu = new Menu(settings);
@@ -298,17 +300,16 @@ public class MainView {
 		preferences.setImage(KeysAnalyzer.getResourceManager().getGear());
 		preferences.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE|SWT.RESIZE);
+				PreferencesDialog dialog = new PreferencesDialog(shell, SWT.CLOSE);
 				dialog.show();
 			}
-		});	
-		
+		});
 
 		MenuItem help = new MenuItem(bar, SWT.CASCADE);
 		help.setText("&Help");
 		Menu helpMenu = new Menu(help);
 		help.setMenu(helpMenu);
-		
+
 		MenuItem helpItem = new MenuItem(helpMenu, SWT.PUSH);
 		helpItem.setText("KeyAnalyzer User Guide\tF1");
 		helpItem.setAccelerator(SWT.F1);
@@ -319,34 +320,34 @@ public class MainView {
 					Program.launch(new File("docs/keyanalyzer.pdf").toURI().toURL().toString());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
-					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING|SWT.OK);
+					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK);
 					box.setMessage("There was an error opening help file.");
-					box.open();					
-				}				
+					box.open();
+				}
 			}
 		});
-	
+
 		new MenuItem(helpMenu, SWT.SEPARATOR);
-		
+
 		MenuItem updatesItem = new MenuItem(helpMenu, SWT.PUSH);
 		updatesItem.setText("Check for Updates");
 		updatesItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
-				checkUpdates(false);				
+				checkUpdates(false);
 			}
 		});
-	
+
 		MenuItem releaseHistory = new MenuItem(helpMenu, SWT.PUSH);
 		releaseHistory.setText("KeyAnalyzer Release History");
 		releaseHistory.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
-				Program.launch("http://www.maxprograms.com/products/keyanalyzerlog.html");			
+				Program.launch("http://www.maxprograms.com/products/keyanalyzerlog.html");
 			}
 		});
-			
+
 		if (!isMac) {
 			new MenuItem(helpMenu, SWT.SEPARATOR);
-			
+
 			MenuItem aboutItem = new MenuItem(helpMenu, SWT.PUSH);
 			aboutItem.setText("About KeyAnalyzer");
 			aboutItem.addSelectionListener(new SelectionAdapter() {
@@ -354,17 +355,15 @@ public class MainView {
 					AboutBox box = new AboutBox(shell, SWT.DIALOG_TRIM);
 					box.show();
 				}
-			});			
+			});
 		}
-		
-	}
 
-	
+	}
 
 	protected void openMap() {
 		MapSelectorDialog dialog = new MapSelectorDialog(shell, SWT.DIALOG_TRIM);
 		if (table.getSelectionCount() == 1) {
-			dialog.setAnalysis((Analysis)table.getSelection()[0].getData("analysis"));
+			dialog.setAnalysis((Analysis) table.getSelection()[0].getData("analysis"));
 		}
 		dialog.show();
 	}
@@ -387,7 +386,7 @@ public class MainView {
 
 	protected void checkUpdates(boolean silent) {
 		try {
-			URL url = new URL("http://www.maxprograms.com/keyanalyzer");  
+			URL url = new URL("http://www.maxprograms.com/keyanalyzer");
 			URLConnection connection = url.openConnection();
 			connection.setConnectTimeout(10000);
 			InputStream input = connection.getInputStream();
@@ -396,29 +395,27 @@ public class MainView {
 			input.read(array);
 			input.close();
 			String version = new String(array).trim();
-			if (!version.equals(Constants.VERSION  + " (" + Constants.BUILD + ")")) { 
-				MessageBox box = new MessageBox(shell,SWT.ICON_QUESTION|SWT.YES|SWT.NO);
-				MessageFormat mf = new MessageFormat("Installed version is: {0}\n" +  
-						"Available version is: {1}\n" +  
-						"\n" + 
-						"Visit download site?");  
-				Object[] args = {Constants.VERSION + " (" + Constants.BUILD + ")",version}; 
-				box.setMessage(mf.format(args)); 
+			if (!version.equals(Constants.VERSION + " (" + Constants.BUILD + ")")) {
+				MessageBox box = new MessageBox(shell, SWT.ICON_QUESTION | SWT.YES | SWT.NO);
+				MessageFormat mf = new MessageFormat(
+						"Installed version is: {0}\n" + "Available version is: {1}\n" + "\n" + "Visit download site?");
+				Object[] args = { Constants.VERSION + " (" + Constants.BUILD + ")", version };
+				box.setMessage(mf.format(args));
 				if (box.open() == SWT.YES) {
-					Program.launch("http://www.maxprograms.com/downloads/"); 
+					Program.launch("http://www.maxprograms.com/downloads/");
 				}
 			} else {
 				if (!silent) {
-					MessageBox box = new MessageBox(shell,SWT.ICON_INFORMATION|SWT.OK);
-					box.setMessage("No updates available.");  
-					box.open();   
+					MessageBox box = new MessageBox(shell, SWT.ICON_INFORMATION | SWT.OK);
+					box.setMessage("No updates available.");
+					box.open();
 				}
 			}
 		} catch (Exception e) {
 			if (!silent) {
-				MessageBox box = new MessageBox(shell,SWT.ICON_WARNING|SWT.OK);
-				box.setMessage("Unable to check for updates.");  
-				box.open();   
+				MessageBox box = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK);
+				box.setMessage("Unable to check for updates.");
+				box.open();
 			}
 		}
 	}
@@ -426,7 +423,8 @@ public class MainView {
 	static MenuItem getItem(Menu menu, int id) {
 		MenuItem[] items = menu.getItems();
 		for (int i = 0; i < items.length; i++) {
-			if (items[i].getID() == id) return items[i];
+			if (items[i].getID() == id)
+				return items[i];
 		}
 		return null;
 	}
@@ -436,7 +434,7 @@ public class MainView {
 		Cursor wait = new Cursor(display, SWT.CURSOR_WAIT);
 		shell.setCursor(wait);
 		Vector<Analysis> list = KeysAnalyzer.getController().getAnalysis();
-		
+
 		Analysis[] array = (Analysis[]) list.toArray(new Analysis[list.size()]);
 		final Collator collator = Collator.getInstance(Locale.getDefault());
 		Arrays.sort(array, new Comparator<Analysis>() {
@@ -446,21 +444,23 @@ public class MainView {
 				if (table.getSortDirection() == SWT.UP) {
 					switch (sortField) {
 					case 0:
-						return collator.compare(o1.getMapFile().toLowerCase(Locale.getDefault()), o2.getMapFile().toLowerCase(Locale.getDefault()));
+						return collator.compare(o1.getMapFile().toLowerCase(Locale.getDefault()),
+								o2.getMapFile().toLowerCase(Locale.getDefault()));
 					case 1:
-						return o1.getDate().compareTo(o2.getDate());					
+						return o1.getDate().compareTo(o2.getDate());
 					}
 				}
 				switch (sortField) {
 				case 0:
-					return collator.compare(o2.getMapFile().toLowerCase(Locale.getDefault()), o1.getMapFile().toLowerCase(Locale.getDefault()));
+					return collator.compare(o2.getMapFile().toLowerCase(Locale.getDefault()),
+							o1.getMapFile().toLowerCase(Locale.getDefault()));
 				case 1:
-					return o2.getDate().compareTo(o1.getDate());					
+					return o2.getDate().compareTo(o1.getDate());
 				}
 				return 0;
 			}
 		});
-		
+
 		table.removeAll();
 		Iterator<Analysis> it = list.iterator();
 		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -468,13 +468,13 @@ public class MainView {
 		while (it.hasNext()) {
 			Analysis a = it.next();
 			TableItem item = new TableItem(table, SWT.NONE);
-			item.setText(new String[]{a.getMapFile(), dformat.format(a.getDate())});
+			item.setText(new String[] { a.getMapFile(), dformat.format(a.getDate()) });
 			item.setData("analysis", a);
 		}
 		shell.setCursor(arrow);
 		wait.dispose();
 	}
-	
+
 	protected void fixColumns() {
 		if (table != null) {
 			Rectangle area = table.getClientArea();
@@ -484,7 +484,7 @@ public class MainView {
 			if (vscroll != null && vscroll.isVisible()) {
 				vbar = vscroll.getSize().x;
 			}
-			dateColumn.setWidth(area.width - mapColumn.getWidth() - vbar);	
+			dateColumn.setWidth(area.width - mapColumn.getWidth() - vbar);
 		}
 	}
 }
