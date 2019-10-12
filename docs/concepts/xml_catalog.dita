@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
 <concept id="concept_lt2_lb4_ts">
- <title>XML Catalog Dialog</title>
- <shortdesc></shortdesc>
- <conbody>
-        <p>The application includes an XML catalog with DTDs and XML Schemas for DITA and related 
-            document types. Additional DTDs and XML Schemas can be added by the user as needed.</p>
+    <title>XML Catalog Dialog</title>
+    <shortdesc/>
+    <conbody>
+        <p>The application includes an XML catalog with DTDs and XML Schemas for DITA and related
+            document types. </p>
+        <p>A custom XML catalog can be selected for parsing custom DITA files if needed.</p>
         <p>Select <uicontrol>XML Catalog</uicontrol> in <uicontrol>Settings</uicontrol> menu or
-            click the <uicontrol><image href="../images/gear.png" height="14px" placement="inline"/>XML Catalog</uicontrol> button on the toolbar to add, edit or
-            remove entries from the catalog. On Mac OS X you can also select
-                <uicontrol>Preferences</uicontrol> in Apple menu.</p>
-        <image href="../images/catalog.png" align="center" otherprops="html">
-            <alt><uicontrol>XML Catalog</uicontrol> Dialog</alt>
-        </image>
-        <image href="../images/catalog.png" align="center" otherprops="pdf" scale="50"/>
+            click the <uicontrol><image href="../images/gear.png" height="14px" placement="inline"
+                />XML Catalog</uicontrol> button on the toolbar to change the default catalog used
+            by KeysAnalyzer. On Mac OS X you can also select <uicontrol>Preferences</uicontrol> in
+            Apple menu.</p>
+        
+            <image href="../images/catalog.png" align="center" >
+                <alt otherprops="html"><uicontrol>XML Catalog</uicontrol> Dialog</alt>
+            </image>
+        
+
+        <p>Use the <uicontrol>Browse...</uicontrol> button to select a different catalog from the
+            file system. Click the <uicontrol>Save Settings</uicontrol> button to store and activate
+            your preferences.</p>
     </conbody>
 </concept>

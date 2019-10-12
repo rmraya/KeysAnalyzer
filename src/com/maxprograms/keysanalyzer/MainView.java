@@ -178,7 +178,7 @@ public class MainView {
 			@Override
 			public void mouseDown(MouseEvent arg0) {
 				try {
-					Program.launch(new File("docs/keyanalyzer.pdf").toURI().toURL().toString());
+					Program.launch(new File("docs/keysanalyzer.pdf").toURI().toURL().toString());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK);
@@ -317,7 +317,7 @@ public class MainView {
 		helpItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
 				try {
-					Program.launch(new File("docs/keyanalyzer.pdf").toURI().toURL().toString());
+					Program.launch(new File("docs/keysanalyzer.pdf").toURI().toURL().toString());
 				} catch (MalformedURLException e) {
 					e.printStackTrace();
 					MessageBox box = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK);

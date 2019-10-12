@@ -11,18 +11,19 @@
         <steps>
             <step>
                 <cmd>In <uicontrol>File</uicontrol> menu, select <uicontrol>Analyze Map</uicontrol>
-                    option or click the <uicontrol><image href="../images/paper.png" height="14px" placement="inline"/>Analyze Map</uicontrol> button on the tool bar.
-                </cmd>
+                    option or click the <uicontrol><image href="../images/paper.png" height="14px"
+                            placement="inline"/>Analyze Map</uicontrol> button on the tool bar. </cmd>
                 <info>You can also double-click on a map from the DITA Keys Analyzer user interface
                     to open the <uicontrol>Analyze Map</uicontrol> dialog with a preselected map. </info>
-                <stepresult>The following dialog appears:
-                    <image href="../images/analyze_dialog.png" placement="break" scale="50" otherprops="pdf"/>
-                    <image href="../images/analyze_dialog.png" placement="break" otherprops="html"/>
+                <stepresult>The following dialog appears: <fig>
+                        <image href="../images/analyze_dialog.png" placement="break"/>
+                    </fig>
                 </stepresult>
             </step>
             <step>
-                <cmd>Type the name of the DITA map that you want to analyze in the <uicontrol>DITA Map</uicontrol> text box or use the <uicontrol>Browse...</uicontrol>
-                    button to select a DITA map from the file system.</cmd>
+                <cmd>Type the name of the DITA map that you want to analyze in the <uicontrol>DITA
+                        Map</uicontrol> text box or use the <uicontrol>Browse...</uicontrol> button
+                    to select a DITA map from the file system.</cmd>
             </step>
             <step>
                 <cmd>If you want to use conditional processing when publishing, enter the name of
@@ -32,7 +33,8 @@
             </step>
             <step>
                 <cmd>Click the <uicontrol>Analyze Map</uicontrol> button.</cmd>
-                <info>You can click the <uicontrol>Cancel</uicontrol> button at any time to stop the analysis process.</info>
+                <info>You can click the <uicontrol>Cancel</uicontrol> button at any time to stop the
+                    analysis process.</info>
             </step>
         </steps>
         <result>The selected DITA map is parsed and all key definitions are collected. A folder
