@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_gkk_nqm_hw">
+ <title>DITA Keys Analyzer</title>
+ <shortdesc></shortdesc>
+ <conbody>
+  <p>DITA Keys Analyzer is a tool designed to report all keys defined and used in a DITA map.</p>
+  <p>A standard DITAVAL file can be used to filter out topics and maps when harvesting keys.</p>
+  <p>Although DITA Keys Analyzer supports the concept of Key Scopes defined in DITA 1.3, it does not
+   yet report the association of keys and scopes.</p>
+  <image href="../images/screenshot.png" scale="50" otherprops="pdf"/>
+  <image href="../images/screenshot.png" otherprops="html">
+   <alt>DITA Keys Analyzer USer Interface</alt>
+  </image>
+  <p>Send feedback, report errors and request new features to <xref
+    href="mailto:tech@maxprograms.com" format="html" scope="external"
+   >tech@maxprograms.com</xref>.</p>
+ </conbody>
+</concept>

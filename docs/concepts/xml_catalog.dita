@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept id="concept_lt2_lb4_ts">
+ <title>XML Catalog Dialog</title>
+ <shortdesc></shortdesc>
+ <conbody>
+        <p>The application includes an XML catalog with DTDs and XML Schemas for DITA and related 
+            document types. Additional DTDs and XML Schemas can be added by the user as needed.</p>
+        <p>Select <uicontrol>XML Catalog</uicontrol> in <uicontrol>Settings</uicontrol> menu or
+            click the <uicontrol><image href="../images/gear.png" height="14px" placement="inline"/>XML Catalog</uicontrol> button on the toolbar to add, edit or
+            remove entries from the catalog. On Mac OS X you can also select
+                <uicontrol>Preferences</uicontrol> in Apple menu.</p>
+        <image href="../images/catalog.png" align="center" otherprops="html">
+            <alt><uicontrol>XML Catalog</uicontrol> Dialog</alt>
+        </image>
+        <image href="../images/catalog.png" align="center" otherprops="pdf" scale="50"/>
+    </conbody>
+</concept>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="task_isp_zb4_ts">
+    <title>Remove Catalog Entry</title>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>In <uicontrol>XML Catalog</uicontrol> dialog, select the catalog entry to
+                    remove.</cmd>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Remove Catalog Entry</uicontrol> button.</cmd>
+            </step>
+        </steps>
+        <result>Selected catalog entry is removed and the catalog is
+            updated to reflect the change.</result>
+    </taskbody>
+</task>

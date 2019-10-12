@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task id="task_dpw_yb4_ts">
+    <title>Add Catalog Entry</title>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd>In <uicontrol>XML Catalog</uicontrol> dialog, click the <uicontrol>Add Catalog
+                        Entry</uicontrol> button.</cmd>
+                <stepresult>The following dialog appears: <image
+                        href="../images/add_catalog_entry.png" placement="break" align="center"
+                        otherprops="html">
+                        <alt>Add Catalog Entry dialog</alt>
+                    </image>
+                    <image href="../images/add_catalog_entry.png" placement="break" align="center"
+                        otherprops="pdf" scale="50"/>
+                </stepresult>
+            </step>
+            <step>
+                <cmd>Select the appropriate entry type from the list.</cmd>
+            </step>
+            <step>
+                <cmd>Click the <uicontrol>Add Entry</uicontrol> button.</cmd>
+            </step>
+            <step>
+                <cmd>If the type of the new entry is "PUBLIC", the following dialog appears: 
+                    <image href="../images/public_entry.png" placement="break" align="center" otherprops="html">
+                        <alt>Add PUBLIC Entry dialog</alt>
+                    </image>
+                    <image href="../images/public_entry.png" placement="break" align="center" otherprops="pdf" scale="50"/>
+                </cmd>
+                <substeps>
+                    <substep>
+                        <cmd>Type the public id of the DTD in the <uicontrol>Public ID</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Type the location of the DTD, relative to the catalog, in the <uicontrol>URI</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Click the <uicontrol>Save</uicontrol> button.</cmd>
+                    </substep>                    
+                </substeps>                
+            </step>
+            <step>
+                <cmd>If type of the new entry is "SYSTEM", the following dialog appears: 
+                    <image href="../images/system_entry.png" placement="break" align="center" otherprops="html">
+                        <alt>Add SYSTEM entry dialog</alt>
+                    </image>
+                    <image href="../images/system_entry.png" placement="break" align="center" otherprops="pdf" scale="50"/>
+                </cmd>
+                <substeps>
+                    <substep>
+                        <cmd>Type the name of the DTD or XML Schema in the <uicontrol>System ID</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Type the location of the DTD or XML Schema, relative to the catalog, in the <uicontrol>URI</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Click the <uicontrol>Save</uicontrol> button.</cmd>
+                    </substep>                    
+                </substeps>                
+            </step>
+            <step>
+                <cmd>If type of the new entry is "URI", the following dialog appears: 
+                    <image href="../images/uri_entry.png" placement="break" align="center" otherprops="html">
+                        <alt>Add URI Entry dialog</alt>
+                    </image>
+                    <image href="../images/uri_entry.png" placement="break" align="center" otherprops="pdf" scale="50"/>
+                </cmd>
+                <substeps>
+                    <substep>
+                        <cmd>Type the name of the URI in the <uicontrol>URI Name</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Type the location of the corresponding DTD or XML Schema, relative to the catalog, in the <uicontrol>URI</uicontrol> text box.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Click the <uicontrol>Save</uicontrol> button.</cmd>
+                    </substep>                    
+                </substeps>
+            </step>
+            <step>
+                <cmd>If the type of the new entry is "nextCatalog" a file selection dialog appears. Locate the catalog in the file system and save it.</cmd>
+            </step>                        
+        </steps>
+    </taskbody>
+</task>

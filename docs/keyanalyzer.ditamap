@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap.dtd" >
+<bookmap xml:lang="en-US">
+    <booktitle>
+        <mainbooktitle>
+            <ph>DITA Keys Analyzer User Guide</ph>
+            <image href="images/logo.png" placement="break" width="512" otherprops="pdf"/>
+            <image href="images/logo.png" placement="break" otherprops="html"/>
+        </mainbooktitle>
+        <booktitlealt class="- topic/ph bookmap/booktitlealt ">
+            <ph>Copyright © 2016-2017 Maxprograms</ph>
+        </booktitlealt>
+    </booktitle>
+    <frontmatter>
+        <booklists>
+            <toc/>
+        </booklists>
+    </frontmatter>
+    
+    <chapter>
+        <topicmeta>
+            <navtitle>Introduction</navtitle>
+        </topicmeta>
+        <topicref href="concepts/keyanalyzer.dita"/>
+    </chapter>
+
+    <chapter>
+        <topicmeta>
+            <navtitle>DITA Keys Analysis Report</navtitle>
+        </topicmeta>
+        <topicref href="tasks/analyze_map.dita"/>
+    </chapter>
+
+    <chapter>
+        <topicmeta>
+            <navtitle>XML Catalog Configuration</navtitle>
+        </topicmeta>
+        <topicref href="concepts/xml_catalog.dita">
+            <topicref href="tasks/add_catalog_entry.dita"/>
+            <topicref href="tasks/edit_catalog_entry.dita"/>
+            <topicref href="tasks/remove_catalog_entry.dita"/>
+        </topicref>
+    </chapter>
+</bookmap>
