@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Shell;
 
-import com.maxprograms.keyanalyzer.Constants;
+import com.maxprograms.keysanalyzer.Constants;
 
 
 public class Locator {

@@ -8,7 +8,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
 
-import com.maxprograms.keyanalyzer.views.HTMLViewer;
+import com.maxprograms.keysanalyzer.views.HTMLViewer;
 
 public class CustomLink  {
 

@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
-import com.maxprograms.keyanalyzer.controllers.ILogger;
+import com.maxprograms.keysanalyzer.controllers.ILogger;
 
 public class LogPanel extends Composite implements ILogger {
 

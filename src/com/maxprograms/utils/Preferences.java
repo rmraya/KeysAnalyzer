@@ -13,7 +13,7 @@ import org.mapdb.HTreeMap;
 public class Preferences {
 
 	private DB mapdb;
-	private HTreeMap<String, Hashtable<String,String>> hashmap;
+	private HTreeMap<String, Hashtable<String, String>> hashmap;
 	private static Preferences instance;
 	private static Hashtable<String, Preferences> instances;
 
@@ -28,11 +28,11 @@ public class Preferences {
 		}
 		return instance;
 	}
-	
+
 	private Preferences(String file) throws IOException {
 		File out = new File(getPreferencesDir(), file);
 		try {
-			mapdb =  DBMaker.newFileDB(out).closeOnJvmShutdown().asyncWriteEnable().make();
+			mapdb = DBMaker.newFileDB(out).closeOnJvmShutdown().asyncWriteEnable().make();
 		} catch (IOError ex) {
 			if (out.exists()) {
 				try {
@@ -45,28 +45,31 @@ public class Preferences {
 					if (t.exists()) {
 						t.delete();
 					}
-					mapdb =  DBMaker.newFileDB(out).closeOnJvmShutdown().asyncWriteEnable().make();
+					mapdb = DBMaker.newFileDB(out).closeOnJvmShutdown().asyncWriteEnable().make();
 				} catch (IOError ex2) {
 					throw new IOException(ex2.getMessage());
 				}
 			} else {
 				throw new IOException(ex.getMessage());
-			}			
+			}
 		}
 		hashmap = mapdb.getHashMap("preferences"); //$NON-NLS-1$
 	}
-	
+
 	public synchronized static File getPreferencesDir() throws IOException {
 		String directory;
 		if (System.getProperty("file.separator").equals("\\")) { //$NON-NLS-1$ //$NON-NLS-2$
 			// Windows
-			directory = System.getenv("AppData") + "\\Maxprograms\\KeyAnalyzer\\"; //$NON-NLS-1$ //$NON-NLS-2$
-		} else if (System.getProperty("os.name").startsWith("Mac")) { //$NON-NLS-1$ //$NON-NLS-2$
-			// Mac
-			directory = System.getProperty("user.home") + "/Library/Preferences/Maxprograms/KeyAnalyzer/"; //$NON-NLS-1$ //$NON-NLS-2$
+			directory = System.getenv("AppData") + "\\Maxprograms\\KeysAnalyzer\\"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
-			// Linux
-			directory = System.getProperty("user.home") + "/.maxprograms/KeyAnalyzer/"; //$NON-NLS-1$ //$NON-NLS-2$
+			String os = System.getProperty("os.name").toLowerCase(); //$NON-NLS-1$ 
+			if (os.startsWith("mac")) { //$NON-NLS-1$ 
+				// Mac
+				directory = System.getProperty("user.home") + "/Library/Application Support/Maxprograms/KeysAnalyzer/"; //$NON-NLS-1$ //$NON-NLS-2$
+			} else {
+				// Linux
+				directory = System.getProperty("user.home") + "/.maxprograms/KeysAnalyzer/"; //$NON-NLS-1$ //$NON-NLS-2$
+			}
 		}
 		File dir = new File(directory);
 		if (!dir.exists()) {
@@ -86,16 +89,16 @@ public class Preferences {
 		hashmap.put(group, g);
 		mapdb.commit();
 	}
-	
+
 	public String get(String group, String name, String defaultValue) {
 		Hashtable<String, String> g = hashmap.get(group);
 		if (g == null) {
 			return defaultValue;
 		}
 		String value = g.get(name);
-		if ( value == null) {
+		if (value == null) {
 			return defaultValue;
-		} 		
+		}
 		return value;
 	}
 

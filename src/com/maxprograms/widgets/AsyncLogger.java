@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import org.eclipse.swt.widgets.Display;
 
-import com.maxprograms.keyanalyzer.controllers.ILogger;
+import com.maxprograms.keysanalyzer.controllers.ILogger;
 
 
 public class AsyncLogger implements ILogger {
