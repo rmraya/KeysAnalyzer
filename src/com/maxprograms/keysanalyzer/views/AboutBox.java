@@ -68,7 +68,7 @@ public class AboutBox {
 		appName.setFont(newFont);
 		
 		Label copyright = new Label(shell, SWT.NONE);
-		copyright.setText("Copyright \u00A9 2016-2017 Maxprograms"); 
+		copyright.setText("Copyright \u00A9 2016-2019 Maxprograms"); 
 		copyright.setAlignment(SWT.CENTER);
 		copyright.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		copyright.setBackground(display.getSystemColor(SWT.COLOR_WHITE));
@@ -127,7 +127,7 @@ public class AboutBox {
 		java.setText("Java Runtime Environment"); 
 		
 		CustomLink javaLink = new CustomLink(licenses, SWT.NONE);
-		javaLink.setText("Oracle Binary Code License Agreement"); 
+		javaLink.setText("GPL2 With Classpath Exception"); 
 		try {
 			javaLink.setURL(new File("lib/licenses/Java.html").toURI().toURL().toString()); 
 		} catch (MalformedURLException e) {
