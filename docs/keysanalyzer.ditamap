@@ -21,7 +21,7 @@
         <topicmeta>
             <navtitle>Introduction</navtitle>
         </topicmeta>
-        <topicref href="concepts/keyanalyzer.dita"/>
+        <topicref href="concepts/keysanalyzer.dita"/>
     </chapter>
 
     <chapter>
